@@ -10,7 +10,18 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
         externalNativeBuild {
+            ndkBuild {
+                //指定 Application.mk 的路径
+                arguments "NDK_APPLICATION_MK:=src/main/jni/Application.mk"
+                //指定生成哪些平台的 so 文件
+                //abiFilters "armeabi-v7a", "armeabi"
+                //cFlags 和 cppFlags 是用来设置环境变量的, 一般不需要动
+                cFlags "-DTEST_C_FLAG1", "-DTEST_C_FLAG2"
+                cppFlags "-DTEST_CPP_FLAG2", "-DTEST_CPP_FLAG2"
+            }
+
             cmake {
                 cppFlags "-frtti -fexceptions"
             }
@@ -22,17 +33,42 @@ android {
             abiFilters "armeabi", "armeabi-v7a", "x86"   //输出指定三种abi体系结构下的so库。目前可有可无。
         }
     }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'armeabi', 'armeabi-v7a','x86'
+            universalApk false
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     externalNativeBuild {
         cmake {
             path "CMakeLists.txt"
         }
     }
+
+    task ndkClean(type: Delete) {
+        // remove unused archs from build cache
+        delete fileTree('.externalNativeBuild') {
+            exclude defaultConfig.ndk.abiFilters.collect { '**/' + it }
+        }
+    }
+    tasks.findByPath(':clean').dependsOn ndkClean
 }
 
 dependencies {
