@@ -13,8 +13,6 @@ public class MainActivity extends AppCompatActivity {
     //生成so文件命令------>android-ndk-r14b wade$ ndk-build -C /Users/wade/Desktop/StudioWork/NDKDemo/app/src/main/jni
 
 
-
-
     // Used to load the 'native-lib' library on application startup.
     // 加载动态库，这里对应 Android.mk 里的 LOCAL_MODULE := NDKDemo
     static {
@@ -40,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     public native int intFromJNI();
 
-    public native  long LongFromJNI();
+    public native long LongFromJNI();
 
-    public  native  char aCharFromJNI();
+    public native char aCharFromJNI();
 }
