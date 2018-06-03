@@ -1,4 +1,4 @@
-package com.caesar.ndkdemo;
+package com.caesar.auto;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.caesar.ndkdemo", appContext.getPackageName());
+        assertEquals("com.caesar.auto", appContext.getPackageName());
     }
 }

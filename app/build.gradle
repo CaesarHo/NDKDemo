@@ -2,9 +2,9 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.3"
+    buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId "com.caesar.ndkdemo"
+        applicationId "com.caesar.auto"
         minSdkVersion 22
         targetSdkVersion 26
         versionCode 1
@@ -28,26 +28,27 @@ android {
         }
 
         ndk {
-            moduleName "NDKDemo"       //生成的so名字
+            moduleName "Auto"       //生成的so名字
             ldLibs "log"//实现__android_log_print
-            abiFilters "armeabi", "armeabi-v7a", "x86"   //输出指定三种abi体系结构下的so库。目前可有可无。
+            abiFilters "armeabi-v7a", "x86","x86_64","arm64-v8a"//,"mips","mips64" //输出指定三种abi体系结构下的so库。目前可有可无。
         }
     }
 
     sourceSets {
         main {
+            jni.srcDirs = []
             jniLibs.srcDirs = ['libs']
         }
     }
 
-    splits {
-        abi {
-            enable true
-            reset()
-            include 'armeabi', 'armeabi-v7a','x86'
-            universalApk false
-        }
-    }
+//    splits {
+//        abi {
+//            enable true
+//            reset()
+//            include 'armeabi', 'armeabi-v7a','x86'
+//            universalApk false
+//        }
+//    }
 
     buildTypes {
         release {
@@ -72,11 +73,12 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:26.+'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:26.+'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+
 }
