@@ -1,9 +1,12 @@
 package com.caesar.auto;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,17 +26,27 @@ public class MainActivity extends AppCompatActivity {
         System.loadLibrary("Auto");
     }
 
+    Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        this.context = this;
         // Example of a call to a native method
         TextView tv = (TextView) findViewById(R.id.sample_text);
         tv.setText(stringFromJNI());
 
         //初始化两个ImageView
         ImageView iv1 = (ImageView) findViewById(R.id.img1);
+        iv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(context, PagingLoadActivity.class);
+                startActivity(intent);
+            }
+        });
         ImageView iv2 = (ImageView) findViewById(R.id.img2);
 
         //iv1设置图片

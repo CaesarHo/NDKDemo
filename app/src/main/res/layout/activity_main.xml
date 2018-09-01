@@ -60,6 +60,10 @@
             app:textProgressColor="#FF00"
             app:tickProgressColor="#abe6" />
 
+
+
+
+
     </android.support.v7.widget.LinearLayoutCompat>
 
 </ScrollView>
