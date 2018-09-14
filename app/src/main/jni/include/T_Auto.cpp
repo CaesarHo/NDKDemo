@@ -1,8 +1,8 @@
 #include <jni.h>
 #include <string>
 #include <android/log.h>
-#include "include/logs.h"
-#include "include/gauss_blur.h"
+#include "logs.h"
+#include "gauss_blur.h"
 #include <stdlib.h>
 #include <android/bitmap.h>
 
@@ -13,7 +13,7 @@
 #include <stdint.h>
 #include <time.h>
 #include <iostream>
-#include "include/cycle.h"
+#include "cycle.h"
 
 //extern "C" {
 //#include "jpeg/android/config.h"
@@ -23,7 +23,7 @@
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_caesar_auto_MainActivity_stringFromJNI(JNIEnv *env, jobject /* this */) {
+Java_com_caesar_auto_natives_NativeTest_testCycle(JNIEnv *env, jobject /* this */) {
     std::string hello = "Hello C++";
     LOGV("hello verbose");
     cycle_while();
@@ -45,7 +45,7 @@ Java_com_caesar_auto_MainActivity_stringFromJNI(JNIEnv *env, jobject /* this */)
  */
 extern "C"
 JNIEXPORT void JNICALL
-Java_com_caesar_auto_MainActivity_gaussBlur(JNIEnv *env, jobject /* this */, jobject bmp) {
+Java_com_caesar_auto_natives_NativeTest_testGaussBlur(JNIEnv *env, jobject /* this */, jobject bmp) {
     LOGD("intFromJNI");
 
     AndroidBitmapInfo info = {0};//初始化BitmapInfo结构体
@@ -58,6 +58,8 @@ Java_com_caesar_auto_MainActivity_gaussBlur(JNIEnv *env, jobject /* this */, job
     /****************************************************/
     AndroidBitmap_unlockPixels(env, bmp);//解锁
 }
+
+
 
 
 //#define true 1

@@ -16,17 +16,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:src="@mipmap/ic_launcher"
-            android:contentDescription="@string/app_name"/>
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/ic_launcher" />
 
         <ImageView
             android:id="@+id/img2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/app_name"
             android:src="@mipmap/ic_launcher"
-            app:layout_constraintTop_toBottomOf="@id/img1"
-            android:contentDescription="@string/app_name"/>
+            app:layout_constraintTop_toBottomOf="@id/img1" />
 
         <TextView
             android:id="@+id/sample_text"
@@ -47,22 +47,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sample_text" />
-
-        <com.caesar.auto.ProtractorView
-            android:layout_width="wrap_content"
-            android:layout_height="1400dp"
-            android:layout_gravity="center_horizontal"
-            app:arcWidth="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/progressbar"
-            app:progressWidth="8dp"
-            app:textProgressColor="#FF00"
-            app:tickProgressColor="#abe6" />
-
-
-
-
 
     </android.support.v7.widget.LinearLayoutCompat>
 

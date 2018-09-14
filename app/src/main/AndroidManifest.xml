@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PagingLoadActivity"></activity>
+        <activity android:name=".loads.PagingLoadActivity"></activity>
     </application>
 
 </manifest>

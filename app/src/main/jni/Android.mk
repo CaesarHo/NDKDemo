@@ -8,7 +8,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := Auto
 
 # 包含要构建到模块中的 C 或 C++ 源文件列表
-LOCAL_SRC_FILES := T_Auto.cpp
+LOCAL_SRC_FILES := include/T_Auto.cpp \ include/codenza.cpp \ include/android_buf.cpp
 
 # 指定这个模块里会用到哪些原生 API，详见：https://developer.android.google.cn/ndk/guides/stable_apis.html
 LOCAL_LDLIBS := -llog -ljnigraphics

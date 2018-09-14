@@ -17,7 +17,9 @@ add_library( # Sets the name of the library.
              SHARED
 
              # Provides a relative path to your source file(s).
-             src/main/jni/T_Auto.cpp)
+             src/main/jni/include/T_Auto.cpp
+             src/main/jni/include/codenza.cpp
+             src/main/jni/include/android_buf.cpp)
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by

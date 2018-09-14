@@ -6,9 +6,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.caesar.auto.loads.PagingLoadActivity;
+import com.caesar.auto.natives.NativeTest;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         this.context = this;
         // Example of a call to a native method
         TextView tv = (TextView) findViewById(R.id.sample_text);
-        tv.setText(stringFromJNI());
+        tv.setText(NativeTest.getInstance().testCycle());
 
         //初始化两个ImageView
         ImageView iv1 = (ImageView) findViewById(R.id.img1);
@@ -54,20 +58,10 @@ public class MainActivity extends AppCompatActivity {
         //生成bitmap对象
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher_round);
         //调用native方法，传入Bitmap对象，对Bitmap进行高斯迷糊处理
-        gaussBlur(bitmap);
+        NativeTest.getInstance().testGaussBlur(bitmap);
         //把Bitmap对象设置给iv2
         iv2.setImageBitmap(bitmap);
+
+        Log.d("TEST = " , NativeTest.getInstance().testCodenza() + "");
     }
-
-    /**
-     * A native method that is implemented by the 'native-lib' native library,
-     * which is packaged with this application.
-     */
-    public native String stringFromJNI();
-
-    public native void gaussBlur(Bitmap bitmap);
-
-    public native long LongFromJNI();
-
-    public native char aCharFromJNI();
 }
