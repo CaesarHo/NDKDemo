@@ -12,9 +12,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.caesar.auto.loads.PagingLoadActivity;
+import com.caesar.auto.natives.NativeListener;
 import com.caesar.auto.natives.NativeTest;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NativeListener{
 
     //export PATH=${PATH}:/Users/wade/Library/Android/android-ndk-r14b
 
@@ -30,13 +31,15 @@ public class MainActivity extends AppCompatActivity {
         System.loadLibrary("Auto");
     }
 
-    Context context;
+    private Context context;
+    public NativeListener nativeListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.context = this;
+        nativeListener = this;
         // Example of a call to a native method
         TextView tv = (TextView) findViewById(R.id.sample_text);
         tv.setText(NativeTest.getInstance().testCycle());
@@ -49,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(context, PagingLoadActivity.class);
                 startActivity(intent);
+                nativeListener.onTest1();
+                nativeListener.onTest2();
             }
         });
         ImageView iv2 = (ImageView) findViewById(R.id.img2);
@@ -62,6 +67,15 @@ public class MainActivity extends AppCompatActivity {
         //把Bitmap对象设置给iv2
         iv2.setImageBitmap(bitmap);
 
-        Log.d("TEST = " , NativeTest.getInstance().testCodenza() + "");
+    }
+
+    @Override
+    public void onTest1() {
+        Log.d("KKK","TEST1");
+    }
+
+    @Override
+    public void onTest2() {
+        Log.d("KKK","TEST2");
     }
 }

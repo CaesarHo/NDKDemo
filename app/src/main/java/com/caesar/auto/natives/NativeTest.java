@@ -28,6 +28,5 @@ public class NativeTest {
     public native String testCycle();
 
     public native void testGaussBlur(Bitmap bitmap);
-
-    public native int testCodenza();
+//    public native String compressBitmap(Bitmap bitmap,int w,int h,int quality,byte[] fileNameStr,boolean optimize);
 }
