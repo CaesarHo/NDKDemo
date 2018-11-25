@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.caesar.auto.datastructure.Structure;
+import com.caesar.auto.ftp.FtpActivity;
 import com.caesar.auto.loads.PagingLoadActivity;
 import com.caesar.auto.natives.NativeListener;
 import com.caesar.auto.natives.NativeTest;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements NativeListener{
 
     private Context context;
     public NativeListener nativeListener;
+    private Structure structure ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +59,17 @@ public class MainActivity extends AppCompatActivity implements NativeListener{
                 nativeListener.onTest2();
             }
         });
+
+
         ImageView iv2 = (ImageView) findViewById(R.id.img2);
+        iv2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(context, FtpActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //iv1设置图片
         iv1.setImageResource(R.mipmap.ic_launcher_round);
@@ -67,6 +80,11 @@ public class MainActivity extends AppCompatActivity implements NativeListener{
         //把Bitmap对象设置给iv2
         iv2.setImageBitmap(bitmap);
 
+
+
+        structure = Structure.getInstance();
+        structure.DataType();
+        structure.HashSetDemo();
     }
 
     @Override

@@ -40,10 +40,10 @@ void arrays() {
                    {2, 4},
                    {3, 6},
                    {4, 8}};
-//    for (int i = 0; i < 5; ++i) {
-//        for (int j = 0; j < 2; ++j) {
-//            LOGD("arrays i = %d", i);
-//            LOGD("arrays j = %d", j);
-//        }
-//    }
+    for (int i = 0; i < 5; ++i) {
+        for (int j = 0; j < 2; ++j) {
+            LOGD("arrays i = %d", i);
+            LOGD("arrays j = %d", j);
+        }
+    }
 }
