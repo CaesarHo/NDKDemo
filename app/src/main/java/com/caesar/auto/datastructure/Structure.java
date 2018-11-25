@@ -150,6 +150,7 @@ public class Structure {
             }
             array[j + 1] = temp;
         }
+        System.out.println(Arrays.toString(array));
         return array;
     }
 
@@ -182,6 +183,7 @@ public class Structure {
                 arr[miniPost] = temp;
             }
         }
+        System.out.println(Arrays.toString(arr));
         return arr;
     }
 
@@ -207,6 +209,7 @@ public class Structure {
                 }
             }
         }
+        System.out.println(Arrays.toString(array));
         return array;
     }
 
@@ -234,6 +237,7 @@ public class Structure {
             quickSort(arr, low, division - 1);
             quickSort(arr, division + 1, heigh);
         }
+        System.out.println(Arrays.toString(arr));
         return arr;
     }
 
@@ -272,9 +276,13 @@ public class Structure {
      * 序最重要的也就是这个“归并”的过程，归并的过程中需要额外的跟需要归并的两个数组
      * 长度一致的空间
      *
-     * @param nums 未排序数组
+     * @param array 未排序数组
      * @return int[] 排完序数组
      */
+    public int[] sortMerge(int[] array) {
+        return sort(array, 0, array.length - 1);
+    }
+
     private int[] sort(int[] nums, int low, int high) {
         int mid = (low + high) / 2;
         if (low < high) {
@@ -313,10 +321,7 @@ public class Structure {
         for (int k2 = 0; k2 < temp.length; k2++) {
             nums[k2 + low] = temp[k2];
         }
-    }
-
-    public int[] sortMerge(int[] array) {
-        return sort(array, 0, array.length - 1);
+        System.out.println(Arrays.toString(nums));
     }
 
     /**
@@ -353,6 +358,7 @@ public class Structure {
             }
             step /= 2;
         }
+        System.out.println(Arrays.toString(array));
         return array;
     }
 
@@ -375,7 +381,7 @@ public class Structure {
             swap(array, 0, i);
             heapify(array, 0, i);
         }
-
+        System.out.println(Arrays.toString(array));
         return array;
     }
 
